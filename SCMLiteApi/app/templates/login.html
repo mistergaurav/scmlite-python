@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- importing Fontic UI css -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fountic-ui/dist/fountic-ui.min.css">
+<script src="https://cdn.jsdelivr.net/npm/fountic-ui/dist/fountic-ui.min.js"></script>
+
+<link rel="stylesheet" href="{{ url_for('static', path='css/login.css') }}">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <title>SCMXpert: || Login</title>
+</head>
+
+<body onload="createCaptcha()">
+    <section id="main_section">
+        <div class="container">
+
+            <main class="main__content">
+                <div class="content">
+<header>Login</header>
+
+
+<form class="ui form" action="/auth/login" method="post" style="margin-top: 2rem; border: 2px solid #ccc; padding: 2rem; border-radius: 5px;" onsubmit="validateCaptcha()">
+  {% if message %}
+    <div class="ui negative message">
+      <div class="header">Error</div>
+      <p class="alert alert-danger">{{ message|safe }}</p>
+    </div>
+  {% endif %}
+  <div class="field">
+    <label style="font-weight: bold;">Email</label>
+    <div class="ui left icon input">
+      <i class="user icon"></i>
+      <input type="text" name="login_user" placeholder="Enter Email" style="border-radius: 5px;">
+
+    </div>
+  </div>
+  <div class="field">
+    <label style="font-weight: bold;">Password</label>
+    <div class="ui left icon input">
+      <i class="lock icon"></i>
+      <input type="password" class="pass" name="login_password" placeholder="Password" style="border-radius: 5px;">
+      <span class="show" style="font-size: 0.8rem; margin-left: 5px; cursor: pointer; color: #333;">SHOW</span>
+
+    </div>
+  <div style="text-align: center;">
+    <div class="ui segment" style="padding: 9px; background: linear-gradient(45deg, rgba(0,0,0,0.41) 0%, rgba(255,255,255,0.98) 100%); border: none; border-radius: 5px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);">
+      <div id="captcha" style="background-color:rgba(213, 213, 213, 0.703); text-align: center; border-radius: 5px; padding: 10px; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);"></div>
+      <p class="captcha" style="font-weight: bold; margin-top: 1rem; color: #333;">Enter Captcha</p>
+      <button class="ui button" id="refreshbtn" onclick="createCaptcha()" style="background-color: #fff; border-radius: 5px; color: #333; box-shadow: 2px 2px 5px rgba(0,0,0,0.2);"><i class="fa fa-refresh"></i>Refresh</button>
+      <div class="ui input">
+        <input type="text" placeholder="Enter Captcha" id="cpatchaTextBox" oninput="validateCaptcha()" required style="border-radius: 5px;">
+      </div>
+      <p class="captchaError" id="captchaError" style="margin-top: 1rem; font-size: 0.8rem; color: #db2828;"></p>
+    </div>
+  </div>
+  <div class="field">
+    <input type="submit" class="ui button" id="validate_login" value="LOGIN"style="background-color: #333; border: none; border-radius: 5px; color: #fff; box-shadow: 2px 2px 5px rgba(0,0,0);">
+  </div>
+</form>
+
+<script>
+    const form = document.querySelector('.form');
+    const login_user = document.querySelector('input[name="login_user"]');
+    const login_password = document.querySelector('input[name="login_password"]');
+
+let refbtn = document.getElementById("refreshbtn")
+let code;
+let submitBTN = document.getElementById("submitbtn")
+    form.addEventListener('submit', function(event) {
+        // Validate email
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(login_user.value)) {
+            event.preventDefault();
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        // Validate password
+const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@!#$%^&*()_+~`|}{[\]:;?/<>,.])[A-Za-z\d@!#$%^&*()_+~`|}{[\]:;?/<>,.]{8,}$/;
+if (!passwordRegex.test(login_password.value)) {
+  event.preventDefault();
+  alert('Please enter a valid password. Password must be at least 8 characters long, and contain at least one uppercase letter, one lowercase letter, one number, and one special character.');
+  return;
+}
+
+        // Submit the form
+        form.submit();
+    });
+//show password
+const pass_field = document.querySelector(".pass");
+const showBtn = document.querySelector(".show");
+showBtn.addEventListener("click", function () {
+    if (pass_field.type === "password") {
+        pass_field.type = "text";
+        showBtn.textContent = "HIDE";
+        showBtn.style.color = "#D052F6";
+    } else {
+        pass_field.type = "password";
+        showBtn.textContent = "SHOW";
+        showBtn.style.color = "#223";
+    }
+});
+
+//captcha
+function createCaptcha() {
+    document.getElementById('captcha').innerHTML = "";
+    var charsArray =
+        "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ@!#";
+    var lengthOtp = 5;
+    var captcha = [];
+while (captcha.length < lengthOtp) {
+  var index = Math.floor(Math.random() * charsArray.length);
+  var char = charsArray[index];
+  if (!captcha.includes(char)) captcha.push(char);
+}
+
+    var canv = document.createElement("canvas");
+    canv.id = "captcha";
+    canv.width = 100;
+    canv.height = 50;
+    var ctx = canv.getContext("2d");
+    ctx.font = "25px Georgia";
+    ctx.strokeText(captcha.join(""), 0, 30);
+
+    code = captcha.join("");
+    document.getElementById("captcha").appendChild(canv);
+canv.setAttribute('aria-label', code);
+
+}
+var capt = false;
+var validate_login = document.getElementById("validate_login")
+validate_login.disabled = true;
+function validateCaptcha() {
+    var capt = document.getElementById("cpatchaTextBox").value;
+    if (capt == code) {
+        capt = true;
+        document.getElementById("captchaError").innerHTML = '';
+        validate_login.disabled = false;
+    }
+    else {
+        capt = false;
+        document.getElementById("captchaError").innerHTML = 'Invalid captcha';
+
+    }
+
+}
+
+
+
+
+</script>
+
+                    <a style="top: 2rem;" href="/signup">Create new account</a>
+                </div>
+
+            </main>
+        </div>
+    </section>
+
+
+</body>
+</html>

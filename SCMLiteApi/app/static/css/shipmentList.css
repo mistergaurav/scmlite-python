@@ -1,0 +1,195 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans&display=swap');
+
+/* Base styles */
+body {
+  font-family: 'Google Sans', sans-serif;
+}
+
+/* Shipment_main section */
+#shipment_main {
+  background-color: #f7fafc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav__toggle--label {
+  display: inline-flex;
+}
+
+.nav__toggle {
+  font-size: 1.5rem;
+}
+
+.text-gray-900 {
+  color: #1a202c;
+}
+
+.text-gray-700 {
+  color: #4a5568;
+}
+
+.hover:text-gray-700:hover {
+  color: #4a5568;
+}
+
+.btn-get-started {
+  display: inline-block;
+  background-color: #38a169;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-get-started:hover {
+  background-color: #2f855a;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #f7fafc;
+}
+
+.sidebar--header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #fff;
+}
+
+.avatar {
+  background-color: #cbd5e0;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.user__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+.text-gray-500 {
+  color: #a0aec0;
+}
+
+/* Navigation */
+.navigation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation--primary {
+  margin-top: 1.5rem;
+}
+
+.nav__item {
+  margin-bottom: 0.5rem;
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  color: #4a5568;
+  text-decoration: none;
+}
+
+.hover:text-blue-600:hover {
+  color: #3b82f6;
+}
+
+.fa-house {
+  color: #a0aec0;
+}
+
+.fa-truck-fast {
+  color: #a0aec0;
+}
+
+.fa-network-wired {
+  color: #a0aec0;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .nav__toggle--input {
+    display: none;
+  }
+  
+  .nav__toggle--label {
+    display: none;
+  }
+  
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 240px;
+    border-right: 1px solid #e2e8f0;
+  }
+  
+  .sidebar--header {
+    position: sticky;
+    top: 0;
+  }
+  
+  .navigation--primary {
+    margin-top: 3rem;
+  }
+  
+  .nav__link {
+    padding: 0.5rem;
+  }
+}
+table {
+  font-family: 'Roboto', sans-serif;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+th, td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 2px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+td {
+  background-color: #4CAF50;
+  text-align: left;
+  padding: 8px;
+  font-family: "EntypoRegular", sans-serif;
+  border-bottom: 1px solid #ddd;
+}
+
+tr:hover {
+  background-color: #f5f5f5;
+}

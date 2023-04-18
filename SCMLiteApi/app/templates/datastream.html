@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link rel="stylesheet" href="/static/css/datastream.css">
+    <title>SCMXpert-Datastream: ||</title>
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <label for="nav__toggle--input" class="nav__toggle--label">
+                <span class="nav__toggle">
+                    <i class="fas fa-bars"></i>
+                </span>
+            </label>
+    <nav class="sidebar bg-gray-100">
+        <header class="sidebar--header flex items-center justify-center py-4 bg-white">
+          <span class="avatar bg-gray-300 p-2 rounded-full">
+            <i class="fas fa-user-circle"></i>
+          </span>
+          {% if user %}
+          <section class="user__info ml-3">
+            <h5 class="font-bold text-gray-700">Hello {{user["Username"]}}</h5>
+            <span class="text-gray-500 text-sm">{{user["Email"]}}</span>
+          </section>
+          {% else %}
+          <section class="user__info ml-3">
+            <h5 class="font-bold text-gray-700">Login required</h5>
+          </section>
+          {% endif %}
+        </header>
+        <ul class="navigation navigation--primary mt-6">
+          <li class="nav__item">
+            <a href="/" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa-solid fa-house text-xl mr-3"></i>
+              <span class="text-sm font-medium">Home</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/shipment" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa-solid fa-truck-fast text-xl mr-3"></i>
+              <span class="text-sm font-medium">Create Shipment</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/datastream" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa-sharp fa-solid fa-network-wired text-xl mr-3"></i>
+              <span class="text-sm font-medium">Device Data</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/show-shipment" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa-solid fa-database text-xl mr-3"></i>
+              <span class="text-sm font-medium">Shipments</span>
+            </a>
+          </li>
+        </ul>
+        <hr class="decorative__line--break my-6">
+        <ul class="navigation navigation--secondary">
+          {% if user %}
+          <li class="nav__item">
+            <a href="/auth/logout" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa fas fa-right-from-bracket text-xl mr-3"></i>
+              <span class="text-sm font-medium">Log Out</span>
+            </a>
+          </li>
+          {% else %}
+          <li class="nav__item">
+            <a href="/auth/login" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa fas fa-right-from-bracket text-xl mr-3"></i>
+              <span class="text-sm font-medium">Log In</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/signup" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa fas fa-right-from-bracket text-xl mr-3"></i>
+              <span class="text-sm font-medium">Register</span>
+                          </a>
+                      </li>
+                      {% endif %}
+                  </ul>
+              </nav>
+            <main cl18:32 29-03-2023ass="main__content drop-in">
+                <h1 id="title" class="drop-in" style="color: white;text-align: center;    font-size: 35px;">Shipment Device Data</h1>
+
+                    <table style="width: 71.1rem;">
+                        <caption>Shipment device and route data</caption>
+                        <thead>
+                            <tr>
+                                <th>Battery Level</th>
+                                <th>Device ID</th>
+                                <th>First sensor temperature</th>
+                                <th>Route from</th>
+                                <th>Route to</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for data in streaming_data %}
+                            <tr>
+<td>{{data['Battery_Level']}}</td>
+<td>{{data['Device_Id']}}</td>
+<td>{{data['First_Sensor_temperature']}}</td>
+<td>{{data['Route_From']}}</td>
+<td>{{data['Route_To']}}</td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </main>
+
+
+        </div>
+    </section>
+    <script src="/static/js/datastream.js"></script>
+
+</body>
+
+</html>

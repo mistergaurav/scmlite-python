@@ -1,0 +1,192 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+/* login.css */
+
+/* Set default font and background color */
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #F9FAFB;
+}
+
+/* Style the main header */
+header {
+  background-color: #fff;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style the content area */
+.content {
+  padding: 2rem;
+}
+
+/* Style the form fields */
+.ui.form .field label {
+  color: #333;
+}
+
+.ui.form .field input {
+  border-radius: 0;
+}
+
+/* Style the captcha section */
+.ui.segment {
+  margin-top: 2rem;
+  padding: 1rem;
+  border: none;
+  border-radius: 0;
+}
+
+#captcha {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.captcha {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #333;
+}
+
+#refreshbtn {
+  margin-top: 1rem;
+  margin-left: 0.5rem;
+  border-radius: 0;
+  color: #333;
+  background-color: #fff;
+  box-shadow: none;
+}
+
+#refreshbtn:hover {
+  color: #fff;
+  background-color: #333;
+}
+
+.ui.input input[type="text"] {
+  border-radius: 0;
+}
+
+.captchaError {
+  margin-top: 1rem;
+  font-size: 0.8rem;
+  color: #db2828;
+}
+
+/* Style the submit button */
+#validate_login {
+  margin-top: 2rem;
+  border-radius: 0;
+  background-color: #333;
+  color: #fff;
+}
+
+#validate_login:hover {
+  background-color: #555;
+}
+
+.container {
+position: fixed;
+right: 0;
+bottom: 0;
+min-width: 100%;
+min-height: 100%;
+display: flex;
+/* border: 1px solid #babdc5; */
+--width: 78rem;
+--height: 590px;
+contain: strict;
+width: var(--width);
+block-size: var(--height);
+/* background-color: #ffffff; */
+background: url(/static/images/boat.jpg) top center;
+background-repeat: no-repeat;
+background-size: cover;
+position: relative;
+/* border-radius: 1em; */
+overflow: hidden;
+box-shadow: 0px 2.1px 2.6px rgba(0, 0, 0, 0.087),
+0 5.9px 7.1px rgba(0, 0, 0, 0.105), 0 14.2px 27.2px rgba(0, 0, 0, 0.13),
+0 28px 40px rgba(0, 0, 0, 0.2);
+}
+
+.main__content {
+width: 100%;
+display: flex;
+flex-direction: column;
+transition: background-color 200ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+header {
+display: flex;
+align-items: center;
+height: 3rem;
+background-color: hsl(196, 60%, 40%);
+}
+
+
+body:has(:checked) .main__content {
+background-color: #0004;
+}
+
+
+a{
+    position: relative;
+/* top: 2rem; */
+color: #ffffffdb;
+}
+.content {
+border-radius: 10px;
+position: absolute;
+top: 50%;
+left: 50%;
+z-index: 999;
+text-align: center;
+padding: 60px 32px;
+width: 370px;
+transform: translate(-50%, -50%);
+background: rgba(255, 255, 255, 0.133);
+border: 1px solid #fff;
+backdrop-filter: blur(3px);
+box-shadow: 0 0 6px 0 rgba(29, 29, 29, 0.203);
+}
+
+header {
+color: white;
+font-size: 32px;
+font-weight: 600;
+margin: 0 0 35px 0;
+}
+
+
+.show {
+position: absolute;
+right: 25px;
+font-size: 13px;
+font-weight: 700;
+color: #222;
+display: none;
+cursor: pointer;
+}
+
+.pass:valid~.show {
+display: block;
+}
+
+
+.login {
+color: white;
+margin: 20px 0;
+}
+.captchaError {
+color: red;
+
+}
+
+.captcha {
+color: rgb(0, 0, 0)
+}
+

@@ -1,0 +1,82 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700|Verdana');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+/* General Styles */
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Navigation Styles */
+.nav__toggle--label {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  cursor: pointer;
+text-align: center;
+}
+.nav__toggle {
+  display: block;
+  width: 30px;
+  height: 30px;
+}
+.nav__toggle i {
+  font-size: 1.5rem;
+  color: #333;
+  line-height: 1.5rem;
+  vertical-align: middle;
+}
+
+/* Form Styles */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form label.block {
+  text-align: center;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+form input[type="submit"] {
+  margin-top: 1rem;
+}
+
+
+form .text-center {
+  font-size: 0.875rem;
+  margin-top: 1.5rem;
+}
+form .text-gray-700 {
+  color: #4a5568;
+}
+form .text-blue-500 {
+  color: #1c64f2;
+  font-weight: bold;
+}
+form .text-blue-500:hover {
+  text-decoration: underline;
+}
+
+/* Password Input Styles */
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+#showPassword {
+  font-size: 0.875rem;
+  color: #1c64f2;
+  cursor: pointer;
+}

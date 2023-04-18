@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="/static/css/shipmentList.css">
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap" rel="stylesheet">
+    <!-- importing tailwind css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.17/tailwind.min.css" integrity="sha512-KeH8+n+OrZOCDvGRRb4ySPtu9N0hE5V7aJZwz+V7IgSKx0xJ2vOyJSVEzw0Hhtc8OTUd3q3z/JZC+jKH2FXkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-2K+hBCZoMz2FLnm0ibjwzgDh5d5MZ1yhxLYbPG9vVEf5bZdb87fZzQfprjVDmJzAz5y5i5tkCmKj9XNNvqiLZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Your Shipments:||</title>
+<style>
+body {
+  font-family: 'Google Sans', sans-serif;
+}
+
+/* Shipment_main section */
+#shipment_main {
+  background-color: #f7fafc;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav__toggle--label {
+  display: inline-flex;
+}
+
+.nav__toggle {
+  font-size: 1.5rem;
+}
+
+.text-gray-900 {
+  color: #1a202c;
+}
+
+.text-gray-700 {
+  color: #4a5568;
+}
+
+.hover:text-gray-700:hover {
+  color: #4a5568;
+}
+
+.btn-get-started {
+  display: inline-block;
+  background-color: #38a169;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.btn-get-started:hover {
+  background-color: #2f855a;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #f7fafc;
+}
+
+.sidebar--header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background-color: #fff;
+}
+
+.avatar {
+  background-color: #cbd5e0;
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+.user__info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 1rem;
+}
+
+.text-gray-500 {
+  color: #a0aec0;
+}
+
+/* Navigation */
+.navigation {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navigation--primary {
+  margin-top: 1.5rem;
+}
+
+.nav__item {
+  margin-bottom: 0.5rem;
+}
+
+.nav__link {
+  display: flex;
+  align-items: center;
+  color: #4a5568;
+  text-decoration: none;
+}
+
+.hover:text-blue-600:hover {
+  color: #3b82f6;
+}
+
+.fa-house {
+  color: #a0aec0;
+}
+
+.fa-truck-fast {
+  color: #a0aec0;
+}
+
+.fa-network-wired {
+  color: #a0aec0;
+}
+
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.font-medium {
+  font-weight: 500;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .nav__toggle--input {
+    display: none;
+  }
+  
+  .nav__toggle--label {
+    display: none;
+  }
+  
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 240px;
+    border-right: 1px solid #e2e8f0;
+  }
+  
+  .sidebar--header {
+    position: sticky;
+    top: 0;
+  }
+  
+  .navigation--primary {
+    margin-top: 3rem;
+  }
+  
+  .nav__link {
+    padding: 0.5rem;
+  }
+}
+.table-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+thead th {
+  background-color: #3f51b5;
+  color: #fff;
+  font-weight: 600;
+  text-align: left;
+  padding: 1rem;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f5f5f5;
+}
+
+tbody td {
+  padding: 1rem;
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid #ddd;
+}
+
+@media only screen and (max-width: 768px) {
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+  
+  thead th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }
+  
+  tbody td {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+    .skeleton {
+      animation: pulse 2s infinite;
+      background: linear-gradient(to right, #ddd 0%, #efefef 50%, #ddd 100%);
+      background-size: 400% 100%;
+      height: 18px;
+      width: 100%;
+      margin-bottom: 8px;
+    }
+
+    @keyframes pulse {
+      0% {
+        background-position: 0 0;
+      }
+
+      100% {
+        background-position: -135% 0;
+      }
+    }
+</style>
+</head>
+<body>
+    <section id="shipment_main" class="bg-gray-100 flex flex-col md:flex-row">
+        <label for="nav__toggle--input" class="nav__toggle--label inline-flex md:hidden">
+            <span class="nav__toggle">
+                <i class="fas fa-bars"></i>
+            </span>
+        </label>
+        <input type="checkbox" name="navToggle" id="nav__toggle--input" class="nav__toggle--input hidden">
+        
+    
+            <header class="w-full flex justify-between items-center">
+                <h1 class="text-gray-900 font-bold text-2xl lg:text-4xl hover:text-gray-700 px-2">SCM Expert</h1>
+    </header>
+    
+    <nav class="sidebar bg-gray-100">
+        <header class="sidebar--header flex items-center justify-center py-4 bg-white">
+          <span class="avatar bg-gray-300 p-2 rounded-full">
+            <i class="fas fa-user-circle"></i>
+          </span>
+          {% if user %}
+          <section class="user__info ml-3">
+            <h5 class="font-bold text-gray-700 text-center">Hello {{user["Username"]}}</h5>
+            <span class="text-gray-500 text-sm">{{user["Email"]}}</span>
+          </section>
+          {% else %}
+          <section class="user__info ml-3">
+            <h5 class="font-bold text-gray-700">Login required</h5>
+          </section>
+          {% endif %}
+        </header>
+        <ul class="navigation navigation--primary mt-6">
+          <li class="nav__item">
+            <a href="/" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa-solid fa-house text-xl mr-3"></i>
+              <span class="text-sm font-medium">Home</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/shipment" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa-solid fa-truck-fast text-xl mr-3"></i>
+              <span class="text-sm font-medium">Create Shipment</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/datastream" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa-sharp fa-solid fa-network-wired text-xl mr-3"></i>
+              <span class="text-sm font-medium">See Your Device Data</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/show-shipment" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa-solid fa-database text-xl mr-3"></i>
+              <span class="text-sm font-medium">Your Shipments</span>
+            </a>
+          </li>
+        </ul>
+<br>
+        <ul class="navigation navigation--secondary">
+          {% if user %}
+          <li class="nav__item">
+            <a href="/auth/logout" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa fas fa-right-from-bracket text-xl mr-3"></i>
+              <span class="text-sm font-medium">Log Out</span>
+            </a>
+          </li>
+          {% else %}
+          <li class="nav__item">
+<a href="/signup" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+  <i class="fa fas fa-right-from-bracket text-xl mr-3"></i>
+  <span class="text-sm font-medium">Register</span>
+</a>
+
+          </li>
+          <li class="nav__item">
+            <a href="/signup" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa fas fa-right-from-bracket text-xl mr-3"></i>
+              <span class="text-sm font-medium">Register</span>
+                          </a>
+                      </li>
+                      {% endif %}
+                  </ul>
+              </nav>
+    </div>
+    </section>
+    
+    {% if shipment_data %}
+      <table>
+        <thead>
+          <tr>
+            <th>Shipment Invoice Number</th>
+            <th>Route Details</th>
+            <th>Delivery From</th>
+            <th>Delivery To</th>
+            <th>Goods Type</th>
+            <th>Delivery Date</th>
+            <th>Device</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for shipment in shipment_data %}
+            {% set route_details = shipment.Route_Details %}
+            {% set words = route_details.split() %}
+            {% set delivery_from = words[0] %}
+            {% set delivery_to = words[-1] %}
+            <tr>
+                <tD>{{shipment.Shipment_Invoice_Number}}</td>
+              <td>{{ route_details }}</td>
+              <td>{{ delivery_from }}</td>
+              <td>{{ delivery_to }}</td>
+              <td>{{shipment.Goods_Type}}</td>
+              <td>{{shipment.Expected_Delivery_Date}}</td>
+              <td>{{shipment.Device}}</td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    {% else %}
+      <p>{{ shipment }}</p>
+    {% endif %}
+<script>
+// Add animation to table rows
+const tableRows = document.querySelectorAll('tbody tr');
+
+tableRows.forEach(row => {
+  row.addEventListener('mouseover', () => {
+    row.classList.add('highlight');
+  });
+  
+  row.addEventListener('mouseout', () => {
+    row.classList.remove('highlight');
+  });
+});
+
+// Adding sticky header 
+const mediaQuery = window.matchMedia('(max-width: 768px)');
+const header = document.querySelector('thead');
+
+if (mediaQuery.matches) {
+  const tableContainer = document.querySelector('.table-container');
+  
+  tableContainer.addEventListener('scroll', () => {
+    const scrollTop = tableContainer.scrollTop;
+    
+    if (scrollTop > 0) {
+      header.classList.add('sticky');
+    } else {
+      header.classList.remove('sticky');
+    }
+  });
+}
+</script>
+</body>
+</html>

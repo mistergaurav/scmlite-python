@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/static/js/home.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans&display=swap" rel="stylesheet">
+<!-- importing tailwind css -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.17/tailwind.min.css" integrity="sha512-KeH8+n+OrZOCDvGRRb4ySPtu9N0hE5V7aJZwz+V7IgSKx0xJ2vOyJSVEzw0Hhtc8OTUd3q3z/JZC+jKH2FXkg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-vzrZ7lwdZxhqxgQdQSYLOH/VE7LX13TgT24QeTcbld/OYiZ0zS8sGp4cCv4s4/YB4dq9RlVOjzaF+Tw+BZIdGg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/static/css/home.css"> 
+    <title>Home: ||SCMXpert</title>
+</head>
+<body>
+    <section class="bg-gray-100 flex flex-col md:flex-row">
+        <label for="nav__toggle--input" class="nav__toggle--label inline-flex md:hidden">
+            <span class="nav__toggle">
+                <i class="fas fa-bars"></i>
+            </span>
+        </label>
+        <input type="checkbox" name="navToggle" id="nav__toggle--input" class="nav__toggle--input hidden">
+            <header class="w-full flex justify-between items-center">
+                <h1 class="text-gray-900 font-bold text-2xl lg:text-4xl hover:text-gray-700 px-2">SCM Expert</h1>
+    </header>        
+    
+
+    
+    <nav class="sidebar bg-gray-100">
+        <header class="sidebar--header flex items-center justify-center py-4 bg-white">
+          <span class="avatar bg-gray-300 p-2 rounded-full">
+            <i class="fas fa-user-circle"></i>
+          </span>
+          {% if user %}
+          <section class="user__info ml-3">
+            <h5 class="font-bold text-gray-700 text-center">Hello {{user["Username"]}}</h5>
+            <span class="text-gray-500 text-sm">{{user["Email"]}}</span>
+          </section>
+          {% else %}
+          <section class="user__info ml-3">
+            <h5 class="font-bold text-gray-700">Login required</h5>
+          </section>
+          {% endif %}
+        </header>
+        <ul class="navigation navigation--primary mt-6">
+          <li class="nav__item">
+            <a href="/" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa-solid fa-house text-xl mr-3"></i>
+              <span class="text-sm font-medium">Home</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/shipment" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa-solid fa-truck-fast text-xl mr-3"></i>
+              <span class="text-sm font-medium">Create Shipment</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/datastream" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa-sharp fa-solid fa-network-wired text-xl mr-3"></i>
+              <span class="text-sm font-medium">See Your Device Data</span>
+            </a>
+          </li>
+          <li class="nav__item">
+            <a href="/show-shipment" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa-solid fa-database text-xl mr-3"></i>
+              <span class="text-sm font-medium">Your Shipments</span>
+            </a>
+          </li>
+        </ul>
+<br>
+        <ul class="navigation navigation--secondary">
+          {% if user %}
+          <li class="nav__item">
+            <a href="/auth/logout" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa fas fa-right-from-bracket text-xl mr-3"></i>
+              <span class="text-sm font-medium">Log Out</span>
+            </a>
+          </li>
+          {% else %}
+          <li class="nav__item">
+<a href="/signup" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+  <i class="fa fas fa-right-from-bracket text-xl mr-3"></i>
+  <span class="text-sm font-medium">Register</span>
+</a>
+
+          </li>
+          <li class="nav__item">
+            <a href="/signup" class="nav__link flex items-center text-gray-700 hover:text-blue-600">
+              <i class="fa fas fa-right-from-bracket text-xl mr-3"></i>
+              <span class="text-sm font-medium">Register</span>
+                          </a>
+                      </li>
+                      {% endif %}
+                  </ul>
+              </nav>
+    </div>
+    </section>
+ 
+</body>
+</html>

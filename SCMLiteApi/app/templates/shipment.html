@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/shipment.css">
+    <script src="/static/js/shipment.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/3.1.1/tailwind.min.css" integrity="sha512-LH4Q4bq3sdt8MvzlzmkX9xy1LbOuOK7Q2xvwtSEV7jKps29vgP76dO8pBGYZuI/kR9/OjS9l8W/Nd/aLl2g/QQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css" integrity="sha512-2K+hBCZoMz2FLnm0ibjwzgDh5d5MZ1yhxLYbPG9vVEf5bZdb87fZzQfprjVDmJzAz5y5i5tkCmKj9XNNvqiLZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Shipment:||</title>
+<style>
+.nav {
+  background-color: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-list {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-item {
+  margin-right: 10px;
+}
+
+.nav-link {
+  color: #666;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  color: #333;
+}
+
+.nav-link.active {
+  color: #333;
+  text-decoration: underline;
+}
+
+/* For the hamburger icon */
+.nav-toggle--label {
+  display: block;
+  position: relative;
+  height: 28px;
+  width: 28px;
+  cursor: pointer;
+}
+
+.nav-toggle {
+  position: relative;
+  display: inline-block;
+  width: 20px;
+  height: 2px;
+  background-color: #666;
+  border-radius: 2px;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-toggle:before, .nav-toggle:after {
+  position: absolute;
+  content: "";
+  width: 20px;
+  height: 2px;
+  background-color: #666;
+  border-radius: 2px;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-toggle
+</style>
+</head>
+
+<body class="bg-gray-100">
+<section>
+    <div class="container mx-auto px-4">
+<nav class="nav">
+  <div class="nav-content">
+    <ul class="nav-list">
+      <li class="nav-item">
+        <a href="/" class="nav-link">Home</a>
+      </li>
+      <li class="nav-item">
+        <a href="/shipment" class="nav-link">Create Shipment</a>
+      </li>
+      <li class="nav-item">
+        <a href="/datastream" class="nav-link">See Your Device Data</a>
+      </li>
+      <li class="nav-item">
+        <a href="/show-shipment" class="nav-link">Your Shipments</a>
+      </li>
+    </ul>
+    <hr />
+    <ul class="nav-list">
+      {% if user %}
+      <li class="nav-item">
+        <a href="/auth/logout" class="nav-link">Log Out</a>
+      </li>
+      {% else %}
+      <li class="nav-item">
+        <a href="/signup" class="nav-link">Register</a>
+      </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+            <main class="main__content" style="margin-left: 13rem;padding-bottom: 2rem;padding-top: 2rem;width: 140%;">
+                <div class="container1 drop-in">
+                    <h1 id="title" class="drop-in">Create Shipment</h1>
+                            <p>
+                                <span style="color: rgb(0, 123, 43);margin-left: 9rem;">{{success_message}}</span>
+                                <span style="color: crimson;margin-left: -9rem;">{{message}}</span>
+                            </p>
+                    <hr class="drop-in-2" />
+                    <form method="POST" action="/shipment" enctype="multipart/form-data" id="survey-form">
+                        <div class="input-box">
+                            <label for="Shipment_invoicenumber" class="title-label"
+                                id="name-label">Shipment invoice number</label>
+
+                            <input type="Number" id="Shipment_Invoice_Number" name="shipment_invoice_number"
+                                class="input-text" placeholder="Invoice_Number" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="container_number" class="title-label"
+                                id="container_number">Container Number</label>
+                            <input type="number" id="container_number" name="container_number" class="input-text"
+                                placeholder="container_number" required>
+                        </div>
+<div class="input-box">
+  <label for="Expected_Delivary_Date" class="title-label" id="number-label">Expected Delivery Date</label>
+  <input type="date" id="Expected_Delivary_Date" name="delivery_date" class="input-text" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; font-size: 16px;">
+</div>
+                        <p style="color:blue; background-color: pink; padding:9px;">Route_Details</p>
+                        <div class="input-box">
+                            <select name="route_details" id="Route_Details" class="input-text">
+                                <option value="Kolkata To Arizona, United States ">Kolkata To Arizona, United States </option>
+Here are some more options with corrected spellings:
+<option value="Sydney to New York, United States">Sydney to New York, United States</option>
+<option value="London to Paris, France">London to Paris, France</option>
+<option value="Tokyo to Los Angeles, United States">Tokyo to Los Angeles, United States</option>
+<option value="Dubai to Istanbul, Turkey">Dubai to Istanbul, Turkey</option>
+<option value="Shanghai to Vancouver, Canada">Shanghai to Vancouver, Canada</option>
+<option value="Cape Town to Rio de Janeiro, Brazil">Cape Town to Rio de Janeiro, Brazil</option>
+<option value="Moscow to Beijing, China">Moscow to Beijing, China</option>
+<option value="Mumbai to Dubai, United Arab Emirates">Mumbai to Dubai, United Arab Emirates</option>
+<option value="São Paulo to Madrid, Spain">São Paulo to Madrid, Spain</option>
+<option value="Toronto to Mexico City, Mexico">Toronto to Mexico City, Mexico</option>
+                            </select>
+                        </div>
+                        <p style="color:blue; background-color: pink; padding:9px;">Goods_Type</p>
+                        <div class="input-box">
+                            <select name="goods_type" id="Goods_Type" class="input-text">
+<option value="Clothing">Clothing</option>
+<option value="Home Appliances">Home Appliances</option>
+
+                                <option value="Electronics">Electronics</option>
+<option value="Sports and Fitness">Sports and Fitness</option>
+<option value="Books and Stationery">Books and Stationery</option>
+
+                                <option value="Medical">Medical</option>
+<option value="Toys and Games">Toys and Games</option>
+<option value="Food and Beverages">Food and Beverages</option>
+<option value="Automotive">Automotive</option>
+<option value="Pet Supplies">Pet Supplies</option>
+<option value="Home Decor">Home Decor</option>
+<option value="Jewelry and Accessories">Jewelry and Accessories</option>
+
+
+                            </select>
+                        </div>
+                        <p style="color:blue; background-color: pink; padding:9px;">Device</p>
+                        <div class="input-box">
+                            <select name="device" id="Device" class="input-text">
+                                <option value="Device">Device</option>
+                                <option value="Dev_1">Dev_1</option>
+                                <option value="Dev_2">Dev_2</option>
+                                <option value="Dev_3">Dev_3</option>
+                            </select>
+                        </div>
+                        <div class="input-box">
+                            <label for="PO_Number" class="title-label" id="PO_Number">PO_Number</label>
+                            <input type="number" maxlength="6" minlength="6" id="po_number" name="po_number"
+                                class="input-text" placeholder="po_number" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="Delivery_Number" class="title-label"
+                                id="Delivery_Number">Delivery_Number</label>
+                            <input type="number" id="Delivery_Number" name="delivery_number" class="input-text"
+                                placeholder="Delivery_Number" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="ndcnumber" class="title-label" id="ndcnumber">NDC_Number</label>
+                            <input type="number" id="ndcnumber" name="ndcnumber" class="input-text"
+                                placeholder="ndcnumber" required>
+                        </div>
+                        <div class="input-box">
+                            <label for="batch_id" class="title-label" id="batch_id">Batch_ID</label>
+                            <input type="number" id="batch_id" name="batch_id" class="input-text" placeholder="batch_id"
+                                required>
+                        </div>
+                        <div class="input-box">
+                            <label for="serialnumberofgoods" name="serialnumberofgoods" class="title-label"
+                                id="serialnumberofgoods">Serial_Number_of_Goods</label>
+                            <input type="number" id="serialnumberofgoods" class="input-text" name="serialnumberofgoods"
+                                placeholder="Serial_Number_of_Goods" required>
+                        </div>
+                        <p style="color:blue; background-color: pink; padding:9px;">Shipment_Description</p>
+                        <div class="input-box">
+                            <textarea id="comment" onkeypress="return blockSpecialChar(event)" class="input-text"
+                                name="description" placeholder="Enter Your Description"></textarea>
+                        </div>
+                        <div class="d-flex justify-content-center btn-group" role="group">
+                            <input type="submit" id="submit" style="width: 50%;">
+                            <input type="reset" id="submit" style="width: 45.9%;">
+                        </div>
+                    </form>
+                </div>
+        </section>
+        </main>
+    </div>
+
+</body>
+
+</html>
